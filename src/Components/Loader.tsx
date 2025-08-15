@@ -16,7 +16,9 @@ const Loader: React.FC<LoaderProps> = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-      onComplete && onComplete();
+      if (onComplete) {
+        onComplete();
+      }
     }, totalDurationMs);
 
     return () => clearTimeout(timer);
@@ -24,9 +26,8 @@ const Loader: React.FC<LoaderProps> = ({
 
   if (!isVisible) return null;
 
-  const containerStyle: React.CSSProperties = {
-    // Responsive logo size: min 140px, scale with viewport, cap at 260px
-    ['--logo-size' as any]: 'clamp(140px, 26vmin, 260px)'
+  const containerStyle: React.CSSProperties & { ['--logo-size']?: string } = {
+    ['--logo-size']: 'clamp(140px, 26vmin, 260px)'
   };
 
   return (

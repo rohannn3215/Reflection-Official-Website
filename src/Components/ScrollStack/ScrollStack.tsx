@@ -55,7 +55,8 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const animationFrameRef = useRef<number | null>(null);
   const lenisRef = useRef<Lenis | null>(null);
   const cardsRef = useRef<HTMLElement[]>([]);
-  const lastTransformsRef = useRef(new Map<number, any>());
+  type TransformSnapshot = { translateY: number; scale: number; rotation: number; blur: number };
+  const lastTransformsRef = useRef(new Map<number, TransformSnapshot>());
   const isUpdatingRef = useRef(false);
   // Cache card positions for performance
   const cardPositions = useRef<number[]>([]);

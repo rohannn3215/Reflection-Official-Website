@@ -61,7 +61,8 @@ const ScrollTransition: React.FC<ScrollStackProps> = ({
   const animationFrameRef = useRef<number | null>(null);
   const lenisRef = useRef<Lenis | null>(null);
   const cardsRef = useRef<HTMLElement[]>([]);
-  const lastTransformsRef = useRef(new Map<number, any>());
+  type TransformSnapshot = { translateY: number; scale: number; rotation: number; blur: number };
+  const lastTransformsRef = useRef(new Map<number, TransformSnapshot>());
   const isUpdatingRef = useRef(false);
   // Cache card positions for performance
   const cardPositions = useRef<number[]>([]);
@@ -314,9 +315,9 @@ const ScrollTransition: React.FC<ScrollStackProps> = ({
               aboutUsCardZoomed &&
               React.isValidElement(child) &&
               child.type &&
-              (child.type as any).displayName === 'ScrollStackItem'
+              (child.type as { displayName?: string }).displayName === 'ScrollStackItem'
             ) {
-            return React.cloneElement(child as React.ReactElement<any>, { itemClassName: 'about-us-zoom' });
+            return React.cloneElement(child as React.ReactElement, { itemClassName: 'about-us-zoom' } as Record<string, unknown>);
             }
             return child;
           })}
