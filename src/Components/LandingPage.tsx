@@ -110,7 +110,7 @@ const LandingPage: React.FC = () => {
           {/* Desktop Nav - centered */}
           <nav className="hidden md:block mx-auto relative">
             <ul className="flex gap-10 text-sm tracking-widest font-julius uppercase text-white/90 relative">
-              {navItems.map((item, index) => (
+              {navItems.map((item, _index) => (
                 <li
                   key={item}
                   className={`cursor-pointer transition-all duration-300 relative flex flex-col items-center hover:scale-110 ${
