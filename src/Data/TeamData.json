@@ -1,0 +1,400 @@
+[
+   {
+    "Name": "Mansi Bendale",
+    "Year": "Btech",
+    "Branch": "DS - 1",
+    "Role": "Choreographer",
+    "photo": "Images/Mansi Bendale.jpg",
+    "Domain": "Choreography"
+  },
+  {
+    "Name": "Pratik Patil",
+    "Year": "Btech",
+    "Branch": "E&TC",
+    "Role": "Management",
+    "photo": "Images/pratik_patil.jpg",
+    "Domain": "Management"
+  },
+  {
+    "Name": "Bhumika Patil",
+    "Year": "Btech",
+    "Branch": "Comp - 1",
+    "Role": "Choreographer",
+    "photo": "Images/Bhumika Patil.jpg",
+    "Domain": "Choreography"
+  },
+  {
+    "Name": "Sneha Shrikande",
+    "Year": "Btech",
+    "Branch": "Electrical",
+    "Role": "Choreographer",
+    "photo": "Images/Sneha Shrikande.jpg",
+    "Domain": "Choreography"
+  },
+  
+  {
+    "Name": "Manswi Ahirrao",
+    "Year": "Btech",
+    "Branch": "Comp - 2",
+    "Role": "Choreographer",
+    "photo": "Images/Manswi Ahirrao.jpg",
+    "Domain": "Choreography"
+  },
+  {
+    "Name": "Sanskruti Pawar",
+    "Year": "Btech",
+    "Branch": "Comp - 3",
+    "Role": "Choreographer",
+    "photo": "Images/Sanskruti Pawar.jpg",
+    "Domain": "Choreography"
+  },
+  {
+    "Name": "Vinay Shah",
+    "Year": "Btech",
+    "Branch": "Comp - 3",
+    "Role": "Choreographer",
+    "photo": "Images/Vinay Shah.jpg",
+    "Domain": "Choreography"
+  },
+  {
+    "Name": "Gaurav Salunke",
+    "Number": 8999078762,
+    "Year": "TY",
+    "Branch": "Comp - 1",
+    "PRN": 231101025,
+    "Role": "Management",
+    "photo": "Images/Gaurav_salunke.jpg",
+    "Domain": "Management"
+  },
+  {
+    "Name": "Rohan Jadhav",
+    "Number": 7666295209,
+    "Year": "TY",
+    "Branch": "Comp - 3",
+    "PRN": 231101199,
+    "Role": "Photography & social Media",
+    "photo": "Images/Rohan Jadhav.jpg",
+    "Domain": "Photography & Social Media"
+  },
+  {
+    "Name": "Bhupesh Patil",
+    "Number": 9404307254,
+    "Year": "TY",
+    "Branch": "Comp - 1",
+    "PRN": 231101034,
+    "Role": "Dancer",
+    "photo": "Images/Bhupesh Patil.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Aditya Sonawane",
+    "Number": 9309129443,
+    "Year": "TY",
+    "Branch": "Comp - 1",
+    "PRN": 231101040,
+    "Role": "Photography & social Media",
+    "photo": "Images/aditya sonawane.jpg",
+    "Domain": "Photography & Social Media"
+  },
+  {
+    "Name": "Vedant Badgujar",
+    "Number": 9372562930,
+    "Year": "TY",
+    "Branch": "AIML - 1",
+    "PRN": 231107006,
+    "Role": "Dancer",
+    "photo": "Images/Vedant.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Harsha Dahivadkar",
+    "Number": 9699188635,
+    "Year": "TY",
+    "Branch": "AIML - 1",
+    "PRN": 231107053,
+    "Role": "Management",
+    "photo": "Images/Harsha Dahivadkar.jpg",
+    "Domain": "Management"
+  },
+  {
+    "Name": "Vishakha Girase",
+    "Number": 8459861229,
+    "Year": "TY",
+    "Branch": "MECH",
+    "PRN": 231103018,
+    "Role": "Dancer",
+    "photo": "Images/Vishakha Sisodiya.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Samriddhi Jagtap",
+    "Number": 9699549923,
+    "Year": "TY",
+    "Branch": "Comp - 2",
+    "PRN": 231101079,
+    "Role": "Dancer",
+    "photo": "/Images/Samriddhi Jagtap.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Divya Bhamare",
+    "Number": 9975149335,
+    "Year": "TY",
+    "Branch": "Comp - 1",
+    "PRN": 231101046,
+    "Role": "Dancer",
+    "photo": "/Images/Divya Bhamare.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Tanvi Badgujar",
+    "Number": 7410068219,
+    "Year": "TY",
+    "Branch": "AIML - 1",
+    "PRN": 231107066,
+    "Role": "Management",
+    "photo": "Images/Tanvi Badgujar.jpg",
+    "Domain": "Management"
+  },
+  {
+    "Name": "Nikhil Pawar",
+    "Number": 9691977433,
+    "Year": "TY",
+    "Branch": "Comp - 2",
+    "PRN": 231101101,
+    "Role": "Dancer",
+    "photo": "Images/Nikhil patil.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Srushti patil",
+    "Number": 7499574439,
+    "Year": "TY",
+    "Branch": "AIML - 1",
+    "PRN": 231107012,
+    "Role": "Dancer",
+    "photo": "Images/Srushti Patil.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Bharat Mahale",
+    "Number": 7498209297,
+    "Year": "SY",
+    "Branch": "AIML - 1",
+    "PRN": 241107001,
+    "Role": "Dancer",
+    "photo": "Images/Bharat Mahale.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Neha Chaudhari",
+    "Number": 9699263454,
+    "Year": "SY",
+    "Branch": "Comp - 3",
+    "PRN": 241101082,
+    "Role": "Management",
+    "photo": "Images/Neha Chaudhari.jpg",
+    "Domain": "Management"
+  },
+  {
+    "Name": "Pranjal Mali",
+    "Number": 8830620911,
+    "Year": "SY",
+    "Branch": "DS - 1",
+    "PRN": 241106102,
+    "Role": "Dancer",
+    "photo": "Images/Pranjal Mali.JPG",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Krushna Patil",
+    "Number": 8237003778,
+    "Year": "SY",
+    "Branch": "IT -2",
+    "PRN": 241109011,
+    "Role": "Dancer",
+    "photo": "Images/Krushna Patil.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Sakshi Shimpi",
+    "Number": 8237334472,
+    "Year": "SY",
+    "Branch": "DS - 1",
+    "PRN": 241106103,
+    "Role": "Dancer",
+    "photo": "Images/Sakshi Shimpi.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Himanshu Oza",
+    "Number": 7498015330,
+    "Year": "SY",
+    "Branch": "AIDS - 1",
+    "PRN": 241108030,
+    "Role": "Management",
+    "photo": "Images/Himanshu Oza.jpg",
+    "Domain": "Management"
+  },
+  {
+    "Name": "Bhushan Patil",
+    "Number": 9834083644,
+    "Year": "SY",
+    "Branch": "AIDS - 2",
+    "PRN": 241108079,
+    "Role": "Photography & social Media",
+    "photo": "Images/Bhushan Patil.jpg",
+    "Domain": "Photography & Social Media"
+  },
+  {
+    "Name": "Sonali Mali",
+    "Number": 9322493645,
+    "Year": "SY",
+    "Branch": "E&TC -1",
+    "PRN": 241102104,
+    "Role": "Choreographer",
+    "photo": "Images/Sonali mali.jpg",
+    "Domain": "Choreography"
+  },
+  {
+    "Name": "Sumeet Haswani",
+    "Number": 7757968667,
+    "Year": "SY",
+    "Branch": "AIDS - 2",
+    "PRN": 241108048,
+    "Role": "Choreographer",
+    "photo": "Images/Sumeet Haswani.jpg",
+    "Domain": "Choreography"
+  },
+  {
+    "Name": "Pranav Borse",
+    "Number": 7620328956,
+    "Year": "SY",
+    "Branch": "Comp - 1",
+    "PRN": 241101155,
+    "Role": "Dancer",
+    "photo": "Images/pranav borse.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Mansi Mahale",
+    "Number": 8180069013,
+    "Year": "SY",
+    "Branch": "IT - 1",
+    "PRN": 241109114,
+    "Role": "Dancer",
+    "photo": "Images/Mansi Mahale.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Prerana Jadhav",
+    "Number": 7020212899,
+    "Year": "SY",
+    "Branch": "IT - 1",
+    "PRN": 241109103,
+    "Role": "Dancer",
+    "photo": "Images/Prerna Jadhav.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Devyani Pawar",
+    "Number": 9404167400,
+    "Year": "SY",
+    "Branch": "AIDS - 2",
+    "PRN": 241108055,
+    "Role": "Dancer",
+    "photo": "Images/Devyani Pawar.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Khushi Chopade",
+    "Number": 9764644810,
+    "Year": "SY",
+    "Branch": "Comp - 3",
+    "PRN": 241101024,
+    "Role": "Dancer",
+    "photo": "Images/Khushi chopade.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Rushekesh Dusane",
+    "Number": 9272047759,
+    "Year": "SY",
+    "Branch": "DS - 2",
+    "PRN": 241106112,
+    "Role": "Dancer",
+    "photo": "Images/Rushi.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Pradnya Girase",
+    "Number": 9021415123,
+    "Year": "SY",
+    "Branch": "E&TC -2",
+    "PRN": 241102041,
+    "Role": "Management",
+    "photo": "Images/Pradnya Girase.jpg",
+    "Domain": "Management"
+  },
+  {
+    "Name": "Samruddhi Pawar",
+    "Number": 9890066292,
+    "Year": "SY",
+    "Branch": "AIML - 1",
+    "PRN": 241107031,
+    "Role": "Choreographer",
+    "photo": "Images/Samrudhi.jpg",
+    "Domain": "Choreography"
+  },
+  {
+    "Name": "Pratik Patil",
+    "Number": 9284607338,
+    "Year": "SY",
+    "Branch": "Comp - 3",
+    "PRN": 241101058,
+    "Role": "Photography & social Media",
+    "photo": "Images/Pratik Patil.jpeg",
+    "Domain": "Photography & Social Media"
+  },
+  {
+    "Name": "Sachin Bharwad",
+    "Number": 7721904795,
+    "Year": "SY",
+    "Branch": "Comp - 3",
+    "PRN": 241101158,
+    "Role": "Management",
+    "photo": "Images/Sachin Bharwad.jpg",
+    "Domain": "Management"
+  },
+  {
+    "Name": "Rishi Ghode",
+    "Number": 7057014249,
+    "Year": "SY",
+    "Branch": "E&TC -2",
+    "PRN": 241102115,
+    "Role": "Dancer",
+    "photo": "Images/Rishi G.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Rajshri Mahajan",
+    "Number": 9322043705,
+    "Year": "SY",
+    "Branch": "IT - 1",
+    "PRN": 241109088,
+    "Role": "Dance",
+    "photo": "Images/Rajashri Mahajan.jpg",
+    "Domain": "Dance"
+  },
+  {
+    "Name": "Harshada more",
+    "Number": 8261849832,
+    "Year": "SY",
+    "Branch": "DS - 2",
+    "PRN": 241106098,
+    "Role": "Choreographer",
+    "photo": "Images/Harshada More.jpg",
+    "Domain": "Choreography"
+  }
+ 
+]

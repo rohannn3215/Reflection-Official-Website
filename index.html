@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/Reflection-Logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Club Reflection</title>
+    <script>
+      // Suppress runtime.lastError messages from browser extensions
+      window.addEventListener('error', function(e) {
+        if (e.message && e.message.includes('runtime.lastError')) {
+          e.preventDefault();
+          return false;
+        }
+      });
+      
+      // Suppress unhandled promise rejections related to connection errors
+      window.addEventListener('unhandledrejection', function(e) {
+        if (e.reason && e.reason.message && 
+            e.reason.message.includes('Could not establish connection')) {
+          e.preventDefault();
+          return false;
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

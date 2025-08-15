@@ -1,0 +1,60 @@
+/* Custom delay classes for animations */
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+.delay-400 {
+  transition-delay: 400ms;
+}
+
+.delay-500 {
+  transition-delay: 500ms;
+}
+
+.delay-600 {
+  transition-delay: 600ms;
+}
+
+.delay-700 {
+  transition-delay: 700ms;
+}
+
+.delay-1200 {
+  transition-delay: 1200ms;
+}
+
+/* Custom duration classes */
+.duration-800 {
+  transition-duration: 800ms;
+}
+
+.duration-600 {
+  transition-duration: 600ms;
+}
+
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+/* Stagger delays for team cards */
+.stagger-0 { transition-delay: 700ms; }
+.stagger-1 { transition-delay: 750ms; }
+.stagger-2 { transition-delay: 800ms; }
+.stagger-3 { transition-delay: 850ms; }
+.stagger-4 { transition-delay: 900ms; }
+.stagger-5 { transition-delay: 950ms; }
+.stagger-6 { transition-delay: 1000ms; }
+.stagger-7 { transition-delay: 1050ms; }
+.stagger-8 { transition-delay: 1100ms; }
+.stagger-9 { transition-delay: 1150ms; }
+.stagger-10 { transition-delay: 1200ms; }
+.stagger-11 { transition-delay: 1250ms; }
+.stagger-12 { transition-delay: 1300ms; }
+.stagger-13 { transition-delay: 1350ms; }
+.stagger-14 { transition-delay: 1400ms; }
+.stagger-15 { transition-delay: 1450ms; }
+.stagger-16 { transition-delay: 1500ms; }
+.stagger-17 { transition-delay: 1550ms; }
+.stagger-18 { transition-delay: 1600ms; }
+.stagger-19 { transition-delay: 1650ms; }
+.stagger-20 { transition-delay: 1700ms; }
