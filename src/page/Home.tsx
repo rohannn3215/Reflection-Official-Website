@@ -9,10 +9,10 @@ import Gallery from '../Components/Team/Gallery'
 
 import Footer from '../Components/Footer'
 import ScrollTransition, { ScrollStackItem } from '../Components/ScrollTransition'
-import danceteamImg from '../assets/events/danceteam.jpg'
-import garbaImg from '../assets/events/garba.jpg'
-import freshersImg from '../assets/events/freshers.jpg'
-import cardbgImg from '../assets/events/Cardbg.jpg'
+const danceteamImg = new URL('../assets/events/danceteam.jpg', import.meta.url).href
+const garbaImg = new URL('../assets/events/garba.JPG', import.meta.url).href
+const freshersImg = new URL('../assets/events/freshers.jpg', import.meta.url).href
+const cardbgImg = new URL('../assets/events/Cardbg.jpg', import.meta.url).href
 
 
 
