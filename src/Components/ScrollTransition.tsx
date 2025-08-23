@@ -211,13 +211,13 @@ const ScrollTransition: React.FC<ScrollStackProps> = ({
       lenisRef.current.destroy();
     }
     const lenis = new Lenis({
-      lerp: 0.08, // Increased for faster scrolling
+      lerp: 0.1, // Optimized for better performance
       smoothWheel: true,
-      wheelMultiplier: 1.2, // Increased for faster wheel scrolling
+      wheelMultiplier: 1.0, // Balanced for smooth scrolling
       infinite: false,
       gestureOrientation: 'vertical',
-      touchMultiplier: 2.0, // Increased for faster touch scrolling
-      easing: (t) => 1 - Math.pow(1 - t, 3), // cubic ease out
+      touchMultiplier: 1.5, // Optimized for mobile
+      easing: (t) => t, // Linear easing for better performance
     });
     lenis.on('scroll', updateCardTransforms); // Only update on scroll
     // Keep the Lenis raf loop for smooth scrolling
