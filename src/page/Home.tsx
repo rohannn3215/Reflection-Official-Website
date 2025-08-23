@@ -15,8 +15,6 @@ const freshersImg = new URL('../assets/events/freshers.jpg', import.meta.url).hr
 const cardbgImg = new URL('../assets/events/Cardbg.jpg', import.meta.url).href
 
 
-
-
 const Home = () => {
 
   return (
