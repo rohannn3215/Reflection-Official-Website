@@ -9,38 +9,9 @@ html, body, #root {
   padding: 0;
 }
 
-/* Remove global smooth scrolling to prevent conflicts with Lenis */
-/* html {
+/* Smooth scrolling for the entire page */
+html {
   scroll-behavior: smooth;
-} */
-
-/* Optimize scroll performance */
-* {
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: auto;
-}
-
-/* Improve scroll performance on mobile */
-@media (max-width: 768px) {
-  * {
-    -webkit-overflow-scrolling: auto;
-  }
-}
-
-/* Gallery scroll optimizations */
-.scrolling {
-  pointer-events: none;
-}
-
-.scrolling * {
-  pointer-events: none;
-}
-
-/* Optimize horizontal scroll containers */
-.overflow-x-auto {
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  overscroll-behavior: contain;
 }
 
 /* Custom font class for navbar */

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, lazy, Suspense, useCallback } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 
 // Lazy load heavy components
 const VideoPlayer = lazy(() => import('./VideoPlayer'));
@@ -27,13 +27,18 @@ const events: EventData[] = [
   },
   {
     id: 2,
-    name: "Classical Fusion 2k24",
+    name: "FlashMob 2k24",
     videoUrl: "https://youtu.be/TM_RRsHKSxk?feature=shared",
     youtubeId: "TM_RRsHKSxk",
     images: [
-      "/Events/Flashmob22/IMG1.png",
-      "/Events/Flashmob22/IMG2.png",
-      "/Events/Flashmob22/IMG3.png"
+      "/Images/classical1.jpg",
+      "/Images/classical2.jpg",
+      "/Images/classical3.jpg",
+      "/Images/classical4.jpg",
+      "/Images/classical5.jpg",
+      "/Images/classical6.jpg",
+      "/Images/classical7.jpg",
+      "/Images/classical8.jpg"
     ],
     description: "Blending traditional classical dance with modern elements, creating a unique fusion that bridges the gap between heritage and contemporary expression."
   },
@@ -118,25 +123,19 @@ const events: EventData[] = [
   },
   {
     id: 5,
-    name: "Street Dance Battle",
+    name: "FlashMob",
     videoUrl: "https://youtu.be/VT4WiSk0gtY?feature=shared",
     youtubeId: "VT4WiSk0gtY",
     images: [
-      "/Events/Flashmob22/IMG1.png",
-      "/Events/Flashmob22/IMG2.png",
-      "/Events/Flashmob22/IMG3.png"
     ],
     description: "Intense street dance competition where our dancers showcase their raw talent, creativity, and competitive spirit in electrifying battles."
   },
   {
     id: 6,
-    name: "Jazz & Tap Showcase",
+    name: "FlashMob 2k22",
     videoUrl: "https://youtu.be/PIuf71iR-DU?feature=shared",
     youtubeId: "PIuf71iR-DU",
     images: [
-      "/Events/Flashmob22/IMG1.png",
-      "/Events/Flashmob22/IMG2.png",
-      "/Events/Flashmob22/IMG3.png"
     ],
     description: "Elegant jazz and rhythmic tap performances that showcase the timeless beauty of American dance traditions with modern flair."
   },
@@ -204,61 +203,42 @@ const events: EventData[] = [
   },
 ];
 
-// Event Card Component
-interface EventCardProps {
-  event: EventData;
-  isSelected: boolean;
-  onClick: () => void;
-}
+// Removed animated background/effects components
 
-const EventCard: React.FC<EventCardProps> = React.memo(({ event, isSelected, onClick }) => {
+// Simplified Event Card (no animations)
+const EventCard: React.FC<{ event: EventData; isSelected: boolean; onClick: () => void }> = ({ event, isSelected, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className={`cursor-pointer rounded-2xl p-6 flex-shrink-0 w-48 relative transition-all duration-200 ${
+      className={`group cursor-pointer rounded-2xl p-6 flex-shrink-0 w-48 relative overflow-hidden ${
         isSelected
-          ? 'bg-gray-800 border-2 border-[#73FF8F] shadow-lg shadow-[#73FF8F]/20'
-          : 'bg-black/60 border border-white/20 hover:bg-black/80 hover:border-white/40'
+          ? 'bg-gray-800 border-2 border-[#73FF8F]'
+          : 'bg-black/60 border border-white/20'
       }`}
     >
-      <div className="text-center">
+      <div className="text-center relative z-10">
         <h3 className={`text-sm font-semibold ${isSelected ? 'text-white' : 'text-gray-300'}`}>
           {event.name}
         </h3>
       </div>
     </div>
   );
-});
+};
 
-EventCard.displayName = 'EventCard';
-
-// Image Modal Component
-interface ImageModalProps {
-  isOpen: boolean;
-  image: string;
-  eventName: string;
-  imageIndex: number;
+// Image Modal Component (no animations)
+const ImageModal: React.FC<{ 
+  isOpen: boolean; 
+  image: string; 
+  eventName: string; 
+  imageIndex: number; 
   totalImages: number;
   onClose: () => void;
   onNext: () => void;
   onPrev: () => void;
-}
-
-const ImageModal: React.FC<ImageModalProps> = React.memo(({ 
-  isOpen, 
-  image, 
-  eventName, 
-  imageIndex, 
-  totalImages, 
-  onClose, 
-  onNext, 
-  onPrev 
-}) => {
+}> = ({ isOpen, image, eventName, imageIndex, totalImages, onClose, onNext, onPrev }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!isOpen) return;
-
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
@@ -269,9 +249,11 @@ const ImageModal: React.FC<ImageModalProps> = React.memo(({
       }
     };
 
-    document.addEventListener('keydown', handleEscape);
-    document.addEventListener('mousedown', handleClickOutside);
-    document.body.style.overflow = 'hidden';
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden';
+    }
 
     return () => {
       document.removeEventListener('keydown', handleEscape);
@@ -280,102 +262,85 @@ const ImageModal: React.FC<ImageModalProps> = React.memo(({
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
-      <div ref={modalRef} className="relative max-w-7xl max-h-full">
-        <button
-          onClick={onClose}
-          className="absolute -top-4 -right-4 z-10 bg-black text-white p-3 rounded-full border border-white/20 hover:bg-gray-800 transition-colors"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
-        {totalImages > 1 && (
-          <>
+    <>
+      {isOpen && (
+        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
+          <div ref={modalRef} className="relative max-w-7xl max-h-full">
             <button
-              onClick={onPrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black text-white p-3 rounded-full border border-white/20 hover:bg-gray-800 transition-colors"
+              onClick={onClose}
+              className="absolute -top-4 -right-4 z-10 bg-black text-white p-3 rounded-full border border-white/20"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
-            <button
-              onClick={onNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black text-white p-3 rounded-full border border-white/20 hover:bg-gray-800 transition-colors"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </>
-        )}
+            {totalImages > 1 && (
+              <>
+                <button
+                  onClick={onPrev}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black text-white p-3 rounded-full border border-white/20"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
 
-        <img
-          src={image}
-          alt={`${eventName} - Image ${imageIndex + 1}`}
-          className="max-w-full max-h-[80vh] object-contain rounded-2xl"
-        />
+                <button
+                  onClick={onNext}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black text-white p-3 rounded-full border border-white/20"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </>
+            )}
 
-        <div className="absolute bottom-4 left-4 right-4 bg-black/80 text-white px-4 py-3 rounded-xl border border-white/20">
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="font-semibold text-lg">{eventName}</h3>
-              <p className="text-gray-300 text-sm">Image {imageIndex + 1} of {totalImages}</p>
+            <img
+              src={image}
+              alt={`${eventName} - Image ${imageIndex + 1}`}
+              className="max-w-full max-h-[80vh] object-contain rounded-2xl"
+            />
+
+            <div className="absolute bottom-4 left-4 right-4 bg-black/80 text-white px-4 py-3 rounded-xl border border-white/20">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-lg">{eventName}</h3>
+                  <p className="text-gray-300 text-sm">Image {imageIndex + 1} of {totalImages}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
-});
+};
 
-ImageModal.displayName = 'ImageModal';
-
-// Image Grid Component
-interface ImageGridProps {
-  images: string[];
-  visibleCount: number;
+// Image Grid (no animations)
+const ImageGrid: React.FC<{ 
+  images: string[]; 
+  visibleCount: number; 
   eventName: string;
   onImageClick: (index: number) => void;
-}
-
-const ImageGrid: React.FC<ImageGridProps> = React.memo(({ 
-  images, 
-  visibleCount, 
-  eventName, 
-  onImageClick 
-}) => {
+}> = ({ images, visibleCount, eventName, onImageClick }) => {
   const displayedImages = images.slice(0, visibleCount);
-
-  if (displayedImages.length === 0) {
-    return (
-      <div className="text-center py-12">
-        <div className="text-6xl mb-4">📸</div>
-        <p className="text-gray-400 text-lg">No images available for this event</p>
-      </div>
-    );
-  }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 sm:gap-6 px-2 sm:px-4 md:px-6 w-full">
       {displayedImages.map((image, index) => (
         <div
-          key={`${eventName}-${index}`}
+          key={index}
           onClick={() => onImageClick(index)}
-          className="relative aspect-square bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer border border-gray-800 hover:border-[#73FF8F] transition-all duration-200 group"
+          className="group relative aspect-square bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer border border-gray-800 hover:border-gray-700 transition-colors"
         >
           <img
             src={image}
             alt={`${eventName} - Image ${index + 1}`}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover"
             loading="lazy"
-            decoding="async"
             onError={(e) => {
               e.currentTarget.src = "https://via.placeholder.com/300x300/111827/ffffff?text=Event+Image";
             }}
@@ -387,9 +352,7 @@ const ImageGrid: React.FC<ImageGridProps> = React.memo(({
       ))}
     </div>
   );
-});
-
-ImageGrid.displayName = 'ImageGrid';
+};
 
 // Main Gallery Component
 const Gallery: React.FC = () => {
@@ -398,136 +361,88 @@ const Gallery: React.FC = () => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const handleEventSelect = useCallback((event: EventData) => {
+  const handleEventSelect = (event: EventData) => {
     setSelectedEvent(event);
     setVisibleImages(6);
     setIsImageModalOpen(false);
-    setSelectedImageIndex(0);
-    
-    // Reset scroll position when event changes with smooth animation
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTo({
-        left: 0,
-        behavior: 'smooth'
-      });
-    }
-  }, []);
+  };
 
-  const showMoreImages = useCallback(() => {
+  const showMoreImages = () => {
     setVisibleImages(prev => Math.min(prev + 4, selectedEvent.images.length));
-  }, [selectedEvent.images.length]);
+  };
 
-  const showAllImages = useCallback(() => {
+  const showAllImages = () => {
     setVisibleImages(selectedEvent.images.length);
-  }, [selectedEvent.images.length]);
+  };
 
-  const scrollLeft = useCallback(() => {
+  const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const cardWidth = 200; // Approximate width of each card + gap
-      const scrollAmount = Math.min(cardWidth * 2, container.scrollLeft);
-      
-      // Optimized scrolling with better performance
-      if (scrollAmount > 0) {
-        container.scrollTo({
-          left: container.scrollLeft - scrollAmount,
-          behavior: 'smooth'
-        });
-      }
+      scrollContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' });
     }
-  }, []);
+  };
 
-  const scrollRight = useCallback(() => {
+  const scrollRight = () => {
     if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const cardWidth = 200; // Approximate width of each card + gap
-      const maxScroll = container.scrollWidth - container.clientWidth;
-      const scrollAmount = Math.min(cardWidth * 2, maxScroll - container.scrollLeft);
-      
-      // Optimized scrolling with better performance
-      if (scrollAmount > 0) {
-        container.scrollTo({
-          left: container.scrollLeft + scrollAmount,
-          behavior: 'smooth'
-        });
-      }
+      scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' });
     }
-  }, []);
+  };
 
-  const handleImageClick = useCallback((index: number) => {
+  const handleImageClick = (index: number) => {
     setSelectedImageIndex(index);
     setIsImageModalOpen(true);
-  }, []);
+  };
 
-  const handleModalClose = useCallback(() => {
+  const handleModalClose = () => {
     setIsImageModalOpen(false);
-  }, []);
+  };
 
-  const handleNextImage = useCallback(() => {
+  const handleNextImage = () => {
     setSelectedImageIndex(prev => 
       prev === selectedEvent.images.length - 1 ? 0 : prev + 1
     );
-  }, [selectedEvent.images.length]);
+  };
 
-  const handlePrevImage = useCallback(() => {
+  const handlePrevImage = () => {
     setSelectedImageIndex(prev => 
       prev === 0 ? selectedEvent.images.length - 1 : prev - 1
     );
-  }, [selectedEvent.images.length]);
+  };
 
   const hasMoreImages = visibleImages < selectedEvent.images.length;
 
-  // Optimize scroll performance
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const handleScroll = () => {
-      // Clear previous timeout
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-
-      // Add loading class during scroll
-      container.classList.add('scrolling');
-
-      // Remove loading class after scroll ends
-      scrollTimeoutRef.current = setTimeout(() => {
-        container.classList.remove('scrolling');
-      }, 150);
-    };
-
-    container.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => {
-      container.removeEventListener('scroll', handleScroll);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-    };
-  }, []);
+  // Removed animation variants
 
   return (
     <div className="min-h-screen bg-transparent relative">
       {/* Hero Section */}
       <div className="relative py-20 px-4 z-10">
         <div className="max-w-7xl mx-auto text-center">
+          {/* <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-white">Reflection's Unfolded</h1> */}
           <div className="flex justify-center items-center relative overflow-hidden">
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black to-transparent z-10"></div>
-            <h1 
-              className="relative z-20 text-[12vw] md:text-8xl font-bold tracking-tight 
-                bg-gradient-to-r from-[#00C8FF] via-[#73FF8F] to-[#FFB300] 
-                bg-clip-text text-transparent select-none"
-              style={{
-                WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 30%, black 100%)',
-                fontFamily: 'serif'
-              }}
-            >
-              Reflection's Unfolded
-            </h1>
-          </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black to-transparent z-10"></div>
+        <h1 
+    className="relative z-20 text-[12vw] md:text-8xl font-bold tracking-tight 
+      bg-gradient-to-r from-[#00C8FF] via-[#73FF8F] to-[#FFB300] 
+      bg-clip-text text-transparent animate-gradient-x select-none"
+    style={{
+      WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 30%, black 100%)',fontFamily: 'serif'
+    }}
+  >
+    Reflection's Unfolded
+  </h1>
+      </div>
+
+      <style>{`
+        .animate-gradient-x {
+          background-size: 200% 200%;
+          animation: gradient-x 4s ease-in-out infinite;
+        }
+        @keyframes gradient-x {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+      `}</style>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl py-10 mx-auto">
             Explore our collection of dance performances and events
           </p>
@@ -539,11 +454,10 @@ const Gallery: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Select Event</h2>
           
-          <div className="relative">
+          <div className="relative group">
             <button
               onClick={scrollLeft}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black text-white p-3 rounded-full border border-white/20 hover:bg-gray-800 transition-colors shadow-lg"
-              style={{ pointerEvents: 'auto' }}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black text-white p-3 rounded-full border border-white/20"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -552,8 +466,7 @@ const Gallery: React.FC = () => {
 
             <button
               onClick={scrollRight}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black text-white p-3 rounded-full border border-white/20 hover:bg-gray-800 transition-colors shadow-lg"
-              style={{ pointerEvents: 'auto' }}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black text-white p-3 rounded-full border border-white/20"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -562,16 +475,8 @@ const Gallery: React.FC = () => {
 
             <div 
               ref={scrollContainerRef}
-              className="flex gap-4 overflow-x-auto px-4 py-2"
-              style={{ 
-                scrollbarWidth: 'none', 
-                msOverflowStyle: 'none',
-                WebkitOverflowScrolling: 'touch',
-                scrollBehavior: 'smooth',
-                overscrollBehavior: 'contain',
-                willChange: 'scroll-position',
-                transform: 'translateZ(0)'
-              }}
+              className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth px-4 py-2"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {events.map((event) => (
                 <EventCard
@@ -591,17 +496,9 @@ const Gallery: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="bg-black/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-gray-700/50 relative">
             <div className="relative z-10">
-              <Suspense fallback={
-                <div className="aspect-video bg-gray-800 rounded-t-3xl flex items-center justify-center text-white">
-                  <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#73FF8F] mx-auto mb-4"></div>
-                    <p>Loading video...</p>
-                  </div>
-                </div>
-              }>
+              <Suspense fallback={<div className="aspect-video bg-gray-800 rounded-t-3xl flex items-center justify-center text-white">Loading video...</div>}>
                 <VideoPlayer event={selectedEvent} />
               </Suspense>
-              
               {/* Event Info */}
               <div className="p-8">
                 <div className="grid md:grid-cols-3 gap-8">
@@ -647,10 +544,10 @@ const Gallery: React.FC = () => {
 
           {/* Load More Buttons */}
           {hasMoreImages && (
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <button
                 onClick={showMoreImages}
-                className="px-8 py-4 bg-black/60 text-white font-medium rounded-xl border border-white/20 hover:bg-black/80 hover:border-white/40 transition-all duration-200"
+                className="px-8 py-4 bg-black/60 text-white font-medium rounded-xl border border-white/20"
               >
                 <span className="flex items-center justify-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -662,7 +559,7 @@ const Gallery: React.FC = () => {
               
               <button
                 onClick={showAllImages}
-                className="px-8 py-4 bg-[#73FF8F] text-black font-semibold rounded-xl hover:bg-[#5AFF7A] transition-colors duration-200"
+                className="px-8 py-4 bg-[#73FF8F] text-black font-semibold rounded-xl"
               >
                 <span className="flex items-center justify-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -675,29 +572,25 @@ const Gallery: React.FC = () => {
           )}
 
           {/* Image Counter */}
-          {selectedEvent.images.length > 0 && (
-            <div className="text-center mt-8">
-              <p className="text-gray-400 text-lg">
-                Showing <span className="text-[#73FF8F] font-semibold">{visibleImages}</span> of <span className="text-[#73FF8F] font-semibold">{selectedEvent.images.length}</span> images
-              </p>
-            </div>
-          )}
+          <div className="text-center mt-8">
+            <p className="text-gray-400 text-lg">
+              Showing <span className="text-[#73FF8F] font-semibold">{visibleImages}</span> of <span className="text-[#73FF8F] font-semibold">{selectedEvent.images.length}</span> images
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Image Modal */}
-      {isImageModalOpen && selectedEvent.images.length > 0 && (
-        <ImageModal
-          isOpen={isImageModalOpen}
-          image={selectedEvent.images[selectedImageIndex]}
-          eventName={selectedEvent.name}
-          imageIndex={selectedImageIndex}
-          totalImages={selectedEvent.images.length}
-          onClose={handleModalClose}
-          onNext={handleNextImage}
-          onPrev={handlePrevImage}
-        />
-      )}
+      <ImageModal
+        isOpen={isImageModalOpen}
+        image={selectedEvent.images[selectedImageIndex]}
+        eventName={selectedEvent.name}
+        imageIndex={selectedImageIndex}
+        totalImages={selectedEvent.images.length}
+        onClose={handleModalClose}
+        onNext={handleNextImage}
+        onPrev={handlePrevImage}
+      />
     </div>
   );
 };
